@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.shortcuts import render
 
-# Create your views here.
+from blog.models import Post
 
 def all_posts(request):
-    return HttpResponse('Hi, Welcome!')
+    posts = Post.objects.all()
+    return render(request, 'blog/index.html', {'posts': posts})
